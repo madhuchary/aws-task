@@ -29,8 +29,8 @@
     ec2_key:
      name: aws-ansible-keys
      region: us-west-2
-     key_material: "{{ item }}"
-    with_file: /home/madhu/tasks/aws-ansible-keys.pub
+#     key_material: "{{ item }}"
+#    with_file: /path/to/key.pub
 
   - name: launch an ec2 instance
     ec2:
@@ -39,7 +39,7 @@
      image: ami-d732f0b7
      region: us-west-2
      exact_count: 1
-     user_data: "{{ lookup('file', '/home/madhu/tasks/apache.sh') }}"
+     user_data: "{{ lookup('file', 'apache.sh') }}"
      count_tag:
       Name: web
      instance_tags:
