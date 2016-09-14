@@ -1,0 +1,9 @@
+Local VM
+Setup AWS 
+Install Ansible
+sudo apt-get install python-pip
+sudo pip install ansible
+
+GITHUB account
+
+upload your ansible code to github

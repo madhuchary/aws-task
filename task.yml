@@ -1,0 +1,48 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Security group for http ec2 group
+    ec2_group:
+      name: http_sg
+      description: Open http port for ec2 instance
+      region: us-west-2
+      rules:
+       - proto: tcp
+         from_port: 80
+         to_port: 80
+         cidr_ip: 0.0.0.0/0
+       - proto: tcp
+         from_port: 22 
+         to_port: 22
+         cidr_ip: 0.0.0.0/0
+       - proto: tcp
+         from_port: 443
+         to_port: 443
+         cidr_ip: 0.0.0.0/0
+      rules_egress:
+       - proto: all
+         from_port: all 
+         to_port: all
+         cidr_ip: 0.0.0.0/0
+
+  - name: Create a pem key 
+    ec2_key:
+     name: aws-ansible-keys
+     region: us-west-2
+     key_material: "{{ item }}"
+    with_file: /home/madhu/tasks/aws-ansible-keys.pub
+
+  - name: launch an ec2 instance
+    ec2:
+     key_name: aws-ansible-keys
+     instance_type: t2.micro
+     image: ami-d732f0b7
+     region: us-west-2
+     exact_count: 1
+     user_data: "{{ lookup('file', '/home/madhu/tasks/apache.sh') }}"
+     count_tag:
+      Name: web
+     instance_tags:
+      Name: web
+    register: ec2  
+
