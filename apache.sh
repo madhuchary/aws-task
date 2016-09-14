@@ -5,7 +5,7 @@ sudo apt-get install crul -y
 
 sudo echo "<html>" > /var/www/html/index.html
 sudo echo "<head>" >> /var/www/html/index.html
-sudo echo "< meta http-equiv=\"Refresh\" content=\"0;URL=https://`curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'`\" />" >> /var/www/html/index.html
+sudo echo "<meta http-equiv=\"refresh\" content=\"0;URL=https://`curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'`/\" />" >> /var/www/html/index.html
 sudo echo "<title>Hello World</title>" >> /var/www/html/index.html
 sudo echo "</head>" >> /var/www/html/index.html
 sudo echo "<body>" >> /var/www/html/index.html
