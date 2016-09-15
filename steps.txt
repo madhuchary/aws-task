@@ -1,9 +1,13 @@
-Local VM
-Setup AWS 
-Install Ansible
+1) Setup AWS account
+
+2) Configure AWS Cli
+pip install awscli
+aws configure
+
+3) Install Ansible
 sudo apt-get install python-pip
 sudo pip install ansible
 
-GITHUB account
+4) Clone and run the palybook
 
-upload your ansible code to github
+ansible-playbook task.yml
