@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt-get update
 sudo apt-get install apache2 -y
-sudo apt-get install crul -y 
+sudo apt-get install curl -y 
 
 sudo echo "<html>" > /var/www/html/index.html
 sudo echo "<head>" >> /var/www/html/index.html
